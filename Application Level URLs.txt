@@ -1,0 +1,214 @@
+Topics to be covered Today:
+
+- Django Project
+
+- Application Level URLs of Django Project
+
+- Django Templates(Templates Based Django Project)
+
+1. Django Project
+2. DJANGOPROJECT4 (Defining URL Patterns at Application Level instead of Project Level:) 
+3. DJANGOPROJECT5 Django Templates: (Develop Template Based Application:)
+
+Django Project
+
+Application Level URLs of DJANGO PROJECT
+
+Django Templates(Templates Based Django Project)
+
+
+Django Project
+==============
+ 
+1) Creation of Django project 
+        django-admin startproject firstProject 
+ 
+2) Creation of Application in that project 
+        python manage.py startapp firstApp 
+ 
+3) Add application to the Project 
+       (inside settings.py) 
+ 
+4) Define view function inside views.py 
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+def home(request):
+    return HttpResponse("""<html><center><h1>My Website</h1></center></html>""")
+
+
+5) Define url-pattern for our view inside urls.py  
+
+from django.contrib import admin
+from django.urls import path
+from firstapp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('home/', views.home)
+]   
+                                                                     
+6) Start Server 
+       python manage.py runserver  
+
+7) Send the request http://127.0.0.1:8000/home/
+
+
+
+Application Level URLs of DJANGO PROJECT:
+=========================================
+1) Creation of Project 
+       django-admin startproject applevelvurlsproject 
+ 
+2) Creation of Application 
+       python manage.py startapp studentsapp 
+ 
+3) Add application to the Project 
+       (inside settings.py) 
+ 
+       INSTALLED_APPS = [ 
+               ......... 
+
+		'studentsapp', 
+       ] 
+ 
+4) Define View Function in views.py 
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+
+def workspace(request):
+    data = """ 
+    <html>
+    <body bgcolor=navy><center>
+    <h1><span style=background-color:yellow;>Welcome To Students Page</span></h1></center>
+    <b style="color:white;"><p>Student Name: Elon</p>
+    <p>Student Name: Messi </p></b>
+
+    </body> 
+    </html>
+    """
+    return HttpResponse(data)
+ 
+5) Create a separate urls.py file inside application 
+
+from django.urls import path
+from studentsapp import views 
+
+
+urlpatterns = [
+    path('workspace/', views.workspace)
+]
+
+6) Include this application level urls.py inside project level urls.py file. 
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('studentsapp/', include('studentsapp.urls')),
+] 
+ 
+7) Run Server 
+
+python manage.py runserver 9988
+ 
+8) Send Request 
+
+http://127.0.0.1:9988/studentsapp/workspace/
+
+
+
+lets add one more application into our Project:
+----------------------------------------------
+2) Creation of Application 
+       python manage.py startapp managementapp 
+ 
+3) Add application to the Project 
+       (inside settings.py) 
+ 
+       INSTALLED_APPS = [ 
+               ......... 
+		'studentsapp',
+    		'managementapp', 
+       ] 
+ 
+4) Define View Function in views.py 
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+
+def adminconsole(request):
+    data = """ 
+    <html>
+    <body bgcolor=black><center>
+    <h1><span style=background-color:yellow;>Welcome To Admin Dashboard</span></h1></center>
+    <b style="color:white;"><p>Admin Name: Nabil</p>
+    <p>Admin Name: Nabil2 </p></b>
+
+    </body> 
+    </html>
+    """
+    return HttpResponse(data)
+
+
+def adminemps(request):
+    data = """ 
+    <html>
+    <body bgcolor=black><center>
+    <h1><span style=background-color:yellow;>Welcome To Admin Employess</span></h1></center>
+    <b style="color:white;"><p>Admin Name: Nabil</p>
+    <p>Admin Name: Nabil2 </p></b>
+
+    </body> 
+    </html>
+    """
+    return HttpResponse(data)
+ 
+5) Create a separate urls.py file inside application 
+
+from django.urls import path
+
+from managementapp import views
+
+urlpatterns = [
+    path('adminconsole/', views.adminconsole),
+    path('adminemployees/', views.adminemps),
+]
+
+6) Include this application level urls.py inside project level urls.py file. 
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('studentsapp/', include('studentsapp.urls')),
+    path('managementapp/',include('managementapp.urls')),
+]
+ 
+7) Run Server 
+
+python manage.py runserver 9988
+ 
+8) Send Request 
+http://127.0.0.1:9988/managementapp/adminconsole/
+http://127.0.0.1:9988/managementapp/adminemployees/
+
+Advantages: 
+The main advantages of defining urlpatterns at application level instead of project level are 
+1) It promotes reusability of Django Applications across multiple projects 
+2) Project level urls.py file will be clean and more readable 
+
+
+GitHub Repository Not giving for this two projects today, Please build yourself this two Projects.

@@ -1,0 +1,105 @@
+Topics to be covered Today:
+
+-Django
+
+-Django Installation
+
+-Django Project(First Project in DJANGO)
+
+Next Session -Django Architecture MVT
+
+Django:
+=======
+1. Django is Backend web development framework.
+
+2. www.djangoproject.com
+
+3. To learn DJANGO - Prerequisites(i will send you in image)
+
+4. We can use Django To develop web applications or websites
+examples: youtube, Instagram, spotify, NASA....etc.
+
+5. To develop web application two things are must required
+        Frontend  frontentend technologies 
+				HTML css js reactjs
+	Backend	  backend technologies
+				Python(DJANGO FRAMEWORK)
+				Databases(Sqlite3,MySQl,PgSQL)
+
+
+6. Biggest Advantages of DJANGO
+i) Freeware & Opensource(we can customize django)
+ii) Django is completely developed by using Python Programming Language
+iii) www.djangoproject.com   DSF
+iv) Django Architecture MVT Models Views Templates
+
+ Models     - Database related coding
+ Views      - processing, business logics related codig
+ Templates  - web pages
+
+7. DJANGO
+who developed? when it came? why the developed DJANGO?
+
+2003 as an internal project at Lowrnce Journal World news paper company web application to maintaine all content
+
+Original Version of DJANGO:
+developed by Adrian Holovaty, Simon Willison
+
+DJANGO 2005 July 21st released to the public
+freeware & open source
+Famous Guitarist Django
+
+8. Top 5 Features of Django:
+
+1 FAST
+
+2 Fully Loaded (Authentication, session managements, Admin pannel)
+
+3 Security
+
+4 Scalability (can handle n number of user requests, traffic)
+
+5 versatile (can handle all ranges)
+ A school application you can develop by using DJANGO
+ A Governament website  you can develop by using DJANGO
+A very secure NASA you can develop by using DJANGO
+
+busiest traffic websites are developed & developing by DJANGO FRAMEWORK
+
+Django- Backend Development Framework
+why Django - Fast Fully Loaded Security Scalability Versatile
+
+Django Installation:
+====================
+-Python Installation (PIP)
+-pip install Django
+
+python --version
+pip --version
+django-admin --version
+
+Creating Django First Project:
+=============================
+-Python Installation (PIP)
+-pip install Django
+
+Step1: create a folder with name DjangoFirstProject
+Step2: open the folder in cmd
+Step3: To create Project
+we create a project with name "mywebsite"
+
+>>>django-admin startproject mywebsite
+
+Step4: cd mywebsite
+
+Step5: To Run Project
+>>> python manage.py runserver
+
+Step6: copy the URL paste in any browser to see the website.
+
+
+
+How to create Django project
+ >>>django-admin startproject mywebsite
+How to run Django project
+ >>>python manage.py runserver

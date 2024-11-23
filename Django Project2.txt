@@ -1,0 +1,104 @@
+Topics to be covered today:
+Architecture of DJANGO:
+=======================
+-Architecture of Web Application
+-Framework
+-DJANGO Framework(MVT)
+-Models
+-Views
+-Templates
+-Architecture of DJANGO Framework
+-DJANGOPROJECT2 
+
+Architecture of Web Application:
+
+end users can send request to the server side application in following ways
+-by typing URL in the browser
+-by clicking on hyperlinks on the browser
+-by submitting html forms
+
+-server side application receives the request,
+process the request and gives the result....
+
+-HTTP/HTTPS...
+
+-while processing the request server side application can communicate to the database if it is required
+
+-in order to develop web application
+we need
+-Frontend and Backend
+or we can say like....
+UI Technologies
+Server side technologies
+Database Technologies
+..........
+DJANGO(sqlite3)........
+.........
+UI Technologies HTML...
+Serverside technologies DJANGO
+.........
+
+Framework:
+
+A Framework is nothing but Project or Application, which allows 
+you to build web application according to some design patterns ....
+
+Architecture of DJANGO Framework
+-flow of project
+-urls.py
+................
+......
+models.py
+views.py
+templates
+.......
+.............
+
+DJANGO PROJECT2
+===============
+
+Step1: djangoproject2 folder
+
+step2: project creation:
+>>>django-admin startproject welcomeproject
+
+Step3: cd welcomeproject
+
+Step4: create a app:
+>>> python manage.py startapp welcomeapp
+
+Step5: in project, settings.py file 'welcomeapp' added
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'welcomeapp',
+]
+
+Step6: in urls.py file:
+
+from welcomeapp import views
+
+path('somalia',views.welcome)
+
+
+Step7: views.py:
+
+from django.http import HttpResponse
+
+def welcome(request):
+    data = """
+    <html><body><h1>Write Any Yours Small HTML Code</h1></body></html>
+    """
+    return HttpResponse(data)
+
+
+Step: Run Project:
+python manage.py runserver
+
+Step9: See your Website by pasting project running url in any browser
+http://127.0.0.1:8000/somalia

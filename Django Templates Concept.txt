@@ -1,0 +1,149 @@
+Topics to be covered Today:
+
+- Django Templates
+
+- Project Level Django Templates Project
+
+- App Level Django Templates Project
+
+Django Templates(Templates Based Django Project)
+================================================
+it is not recommended to write html code inside Python script(views.py file) because:
+1. it reduces readability because python code mixed with html code
+2. no separation of roles. Python developer has to, concentrate on, both python code and html code.
+3. it does not promote reusability of code.
+
+We can overcome these problems, by separating html code in to, a separate html file.
+This html file is nothing but Template.
+
+From python file(views.py) we can use this templates based on our requirement.
+
+Project Level Django Templates Project
+========================================
+1.creation of project
+django-admin startproject projectleveltemplates
+
+2. at the project level, create a folder templates
+
+projectleveltemplates/
+	projectleveltemplates/
+	templates/
+	manage.py 
+
+3. update in settings.py file 
+
+'DIRS': [BASE_DIR / "templates"],
+
+4. create an app 
+python manage.py startapp myapp
+
+5. add app name in settings.py file
+
+6. Create a Template File
+Inside the templates folder, create a sample HTML file, such as home.html, contact.html, about.html
+
+7. write code in views.py file 
+to get templates into views.py file like below
+
+from django.shortcuts import render
+
+def home_view(request):
+    return render(request, 'home.html')
+
+def contact_view(request):
+    return render(request, 'contact.html')
+
+def about_view(request):
+    return render(request, 'about.html')
+
+8. Map views to urls
+inside project urls.py 
+
+from myapp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('home/',views.home_view),
+    path('contact/',views.contact_view),
+    path('about/',views.about_view),
+]
+
+9. Run the server
+python manage.py runserver
+
+10. visit the web addresses
+http://127.0.0.1:8000/home
+http://127.0.0.1:8000/contact
+http://127.0.0.1:8000/about
+
+App Level Django Templates Project
+==================================
+
+1.creation of project
+django-admin startproject appleveltemplates
+
+2. create an app 
+python manage.py startapp myapp
+
+3. add app name in settings.py file
+
+4. for app level templates
+inside myapp -create templates folder -inside templates folder -create subfolder "myapp" #with app name
+
+appleveltemplates/
+	appleveltemplates/	
+	manage.py
+	myapp/
+	  templates/
+		myapp/
+		  home.html
+		  contact.html  
+	
+
+5. update in settings.py file 
+default configuration is available for app level templates
+just check once APP_DIRS is set for "true"
+
+'DIRS': [],
+'APP_DIRS': True,
+
+
+6. Create a Template Files
+Inside App. inside templates/myapp folder, create a sample HTML file, such as home.html, contact.html, about.html
+
+7. write code in views.py file 
+to get templates into views.py file like below
+
+from django.shortcuts import render
+
+def home_view(request):
+    return render(request, 'myapp/home.html')
+
+def contact_view(request):
+    return render(request, 'myapp/contact.html')
+
+def about_view(request):
+    return render(request, 'myapp/about.html')
+
+
+8. Map views to urls
+inside project urls.py 
+
+from myapp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('home/',views.home_view),
+    path('contact/',views.contact_view),
+    path('about/',views.about_view),
+]
+
+9. Run the server
+python manage.py runserver 9000
+
+10. visit the web addresses
+http://127.0.0.1:9000/home
+http://127.0.0.1:9000/contact
+http://127.0.0.1:9000/about
+
+While Creating HTML Pages for both projects, Please create some nice looking Pages.
